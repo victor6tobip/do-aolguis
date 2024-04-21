@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Minimalist Point of Sale</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="container">
+    <div id="pos">
+      <h1>Punto de venta Doña Olguis</h1>
+      <label for="product">Producto:</label>
+      <select id="product">
+        <option value="Tacos de ojo">Tacos de ojo</option>
+        <option value="Tacos de tacos">Tacos de tacos</option>
+        <option value="Jeringas con helado">Jeringas con helado</option>
+        <option value="Mixtas">Mixtas</option>
+        <option value="Shukos">Shukos</option>
+        <option value="Pan con aji">Pan con aji</option>
+      </select>
+
+      <label for="price">Precio:</label>
+      <input type="text" id="price" placeholder="Ingresa el precio del producto">
+
+      <button onclick="addProduct()">Agregar al carrito</button>
+
+      <h2>Productos:</h2>
+      <ul id="productList"></ul>
+    </div>
+  </div>
+
+  <script>
+    function addProduct() {
+      var productInput = document.getElementById("product");
+      var priceInput = document.getElementById("price");
+      var productList = document.getElementById("productList");
+
+      var product = productInput.value;
+      var price = priceInput.value;
+
+      if (product !== "" && price !== "") {
+        var listItem = document.createElement("li");
+        listItem.textContent = product + " - $" + price;
+        productList.appendChild(listItem);
+
+        // Clear input fields
+        priceInput.value = "";
+
+        // Reset dropdown to default option
+        productInput.selectedIndex = 0;
+      }
+    }
+  </script>
+</body>
+</html>
